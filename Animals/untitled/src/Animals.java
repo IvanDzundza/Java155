@@ -1,7 +1,7 @@
 public class Animals {
 
     public String name;
-    private String color;
+    public String color;
 
     public void sayName() {
         System.out.println("My name is " + name);
@@ -9,6 +9,33 @@ public class Animals {
 
     public void sayColor() {
         System.out.println("I am " + color);
+    }
+
+    public static class Fox extends Animals {
+
+        public int age;
+
+        public void sayAge() {
+            System.out.println("I am " + age + " years old");
+        }
+    }
+
+    public static class Wolf extends Animals {
+
+        public int legs;
+
+        public void sayLegs() {
+            System.out.println("I have " + legs + " legs");
+        }
+    }
+
+    public static class AngryWolf extends Wolf {
+
+        public int tooth;
+
+        public void sayTooth() {
+            System.out.println("I have " + tooth + " tooth");
+        }
     }
 
     public static void main(String[] args) {
@@ -33,9 +60,42 @@ public class Animals {
         Barsik.sayName();
         Barsik.sayColor();
 
+        Fox Fox = new Fox();
+        Fox.name = "Foxik";
+        Fox.color = "Orange";
+        Fox.age = 5;
+
+        Fox.sayName();
+        Fox.sayColor();
+        Fox.sayAge();
+
+        Wolf Wolf = new Wolf();
+        Wolf.name = "Wolfik";
+        Wolf.color = "Gray";
+        Wolf.legs = 4;
+
+        Wolf.sayName();
+        Wolf.sayColor();
+        Wolf.sayLegs();
+
+        AngryWolf AngryWolf = new AngryWolf();
+        AngryWolf.name = "AngryWolfik";
+        AngryWolf.color = "Black";
+        AngryWolf.legs = 4;
+        AngryWolf.tooth = 24;
+
+        AngryWolf.sayName();
+        AngryWolf.sayColor();
+        AngryWolf.sayLegs();
+        AngryWolf.sayTooth();
     }
 
     public String getColor() {
         return color;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }
