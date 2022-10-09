@@ -24,7 +24,7 @@ public class Animals {
 
         public int legs;
 
-        public void sayLegs() {
+        final public void sayLegs() {
             System.out.println("I have " + legs + " legs");
         }
     }
@@ -38,6 +38,33 @@ public class Animals {
         }
     }
 
+    abstract public class Wood {
+        private String locality;
+
+        public Wood(String locality) {
+            this.locality = locality;
+        }
+
+        public abstract int getTree();
+
+        protected void sayLocality() {
+            System.out.println("Locality:" + locality);
+        }
+    }
+
+    public class Mushrooms extends Wood {
+        private int mushrooms;
+
+        public Mushrooms(int mushrooms, String locality) {
+            super(locality);
+            this.mushrooms = mushrooms;
+        }
+
+        @Override
+        public int getTree() {
+            return mushrooms * mushrooms;
+        }
+    }
     public static void main(String[] args) {
         Animals Ursus_arctos = new Animals();
         Ursus_arctos.name = "Ursus arctos";
