@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Animals {
 
     public String name;
@@ -65,7 +67,63 @@ public class Animals {
             return mushrooms * mushrooms;
         }
     }
-    public static void main(String[] args) {
+
+    interface Fish {
+        int eyes = 2;
+
+        String getFish();
+
+        static int getEyes () {
+            return Fish.eyes;
+        }
+        default String info () {
+            return definition() +
+                    "1 fish have 2 eyes";
+        }
+        private String definition () {
+            return "Fish live in lakes, rivers, seas and oceans." +
+                    "And also in ponds.\n";
+        }
+    }
+
+    interface Sharks {
+        int fins = 2;
+
+        int getSharks();
+
+        static int getFins () {
+            return Sharks.fins;
+        }
+        default String info () {
+            return definition() +
+                    "1 shark have 4 fins";
+        }
+        private String definition () {
+            return "Sharks live in seas and oceans." +
+                    "Sharks are very dangerous.\n";
+        }
+    }
+
+    interface Dolphins extends Fish {
+        @Override
+        public String getFish();
+
+    }
+
+    public class Dog implements Comparable<Dog> {
+        public String dogname;
+        public int dogage;
+
+        @Override
+        public int compareTo (Dog p) {
+            if (this.dogname.compareTo (p.dogname) !=0)
+                return this.dogname.compareTo (p.dogname);
+            else
+                return Integer.compare (this.dogage, p.dogage);
+        }
+
+
+    public void main(String[] args) {
         Animals Ursus_arctos = new Animals();
         Ursus_arctos.name = "Ursus arctos";
         Ursus_arctos.color = "Brown";
@@ -115,6 +173,25 @@ public class Animals {
         AngryWolf.sayColor();
         AngryWolf.sayLegs();
         AngryWolf.sayTooth();
+
+        Dog breed [] = {
+                new Dog("German Shepherd", 2),
+                new Dog("Bulldog", 3),
+                new Dog("Pickiness", 4)
+        };
+
+        for (Dog dog : breed) {
+            System.out.println(dog);
+        }
+        Arrays.sort(breed, new DogAgeComparator());
+
+        for (Dog dog : breed) {
+            System.out.println(dog);
+        }
+    }
+
+        private class DogAgeComparator {
+        }
     }
 
     public String getColor() {
