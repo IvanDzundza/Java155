@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class Animals {
 
@@ -11,6 +11,45 @@ public class Animals {
 
     public void sayColor() {
         System.out.println("I am " + color);
+    }
+
+    class Environment {
+        String wood;
+        String river;
+
+        public String getWood () {
+            return wood;
+        }
+
+        public void setWood () {
+            this.wood = wood;
+        }
+
+        public String getRiver () {
+            return river;
+        }
+
+        public void setRiver () {
+            this.river = river;
+        }
+
+        static class Newcounter {
+            private static int count = 0;
+
+            public Newcounter () {
+                new Counter().setCount ();
+            }
+
+            public static int getCount() {
+                return count;
+            }
+
+            private static class Counter {
+                private void setCount () {
+                    count = count + 1;
+                }
+            }
+        }
     }
 
     public static class Fox extends Animals {
@@ -110,20 +149,18 @@ public class Animals {
 
     }
 
-    public class Dog implements Comparable<Dog> {
-        public String dogname;
-        public int dogage;
+    enum Animalname {
+        Foxik,
+        Barsik,
+        Wolfik,
+        Snizhok,
+        AngryWolfik,
+        Lola,
+        Milka,
+        Levchuk
+    }
 
-        @Override
-        public int compareTo (Dog p) {
-            if (this.dogname.compareTo (p.dogname) !=0)
-                return this.dogname.compareTo (p.dogname);
-            else
-                return Integer.compare (this.dogage, p.dogage);
-        }
-
-
-    public void main(String[] args) {
+    public static void main(String[] args) {
         Animals Ursus_arctos = new Animals();
         Ursus_arctos.name = "Ursus arctos";
         Ursus_arctos.color = "Brown";
@@ -174,25 +211,20 @@ public class Animals {
         AngryWolf.sayLegs();
         AngryWolf.sayTooth();
 
-        Dog breed [] = {
-                new Dog("German Shepherd", 2),
-                new Dog("Bulldog", 3),
-                new Dog("Pickiness", 4)
-        };
+        Environment.Newcounter n1 = new Environment.Newcounter();
+        Environment.Newcounter n2 = new Environment.Newcounter();
+        Environment.Newcounter n3 = new Environment.Newcounter();
 
-        for (Dog dog : breed) {
-            System.out.println(dog);
-        }
-        Arrays.sort(breed, new DogAgeComparator());
+        System.out.println("Count of newcounter objects = "
+                + Environment.Newcounter.getCount());
 
-        for (Dog dog : breed) {
-            System.out.println(dog);
-        }
+        Animalname animalname = Animalname.Milka;
+        String nameOfAnimal = animalname.name();
+        System.out.println(nameOfAnimal);
+
     }
 
-        private class DogAgeComparator {
-        }
-    }
+
 
     public String getColor() {
         return color;
