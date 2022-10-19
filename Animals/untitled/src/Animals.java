@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class Animals {
@@ -160,7 +161,27 @@ public class Animals {
         Levchuk
     }
 
-    public static void main(String[] args) {
+    static class Descendants<T extends Number> {
+        T[] nums;
+
+        Descendants(T[] o) { nums = o; }
+
+        double average() {
+            double sum = 0.0;
+            for(int i=0; i < nums.length; i++) {
+                sum += nums[i].doubleValue();
+            }
+            return sum/nums.length;
+        }
+
+        boolean sameAvg (Descendants<T> obj) {
+            if (average() == obj.average())
+                return true;
+            return false;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
         Animals Ursus_arctos = new Animals();
         Ursus_arctos.name = "Ursus arctos";
         Ursus_arctos.color = "Brown";
@@ -221,6 +242,69 @@ public class Animals {
         Animalname animalname = Animalname.Milka;
         String nameOfAnimal = animalname.name();
         System.out.println(nameOfAnimal);
+
+        ArrayList<String> animalNames = new ArrayList<String>();
+
+        InputStream inputStream = System.in;
+        Reader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+        System.out.println("Vvedit imya tvarunu nomer 1");
+        animalNames.add(bufferedReader.readLine());
+        System.out.println("Vvedit imya tvarunu nomer 2");
+        animalNames.add(bufferedReader.readLine());
+        System.out.println("Vvedit imya tvarunu nomer 3");
+        animalNames.add(bufferedReader.readLine());
+
+        String animalName1 = animalNames.get(0);
+        System.out.println("animalName1 = " + animalName1);
+
+        String animalName2 = animalNames.get(1);
+        System.out.println("animalName2 = " + animalName2);
+
+        String animalName3 = animalNames.get(2);
+        System.out.println("animalName3 = " + animalName3);
+
+        Scanner in = new Scanner(System.in);
+        for (int i = 1; i <= 3; i++)
+            System.out.println(i + ". Amimal name #" + i);
+        System.out.println("0. Quit");
+
+        boolean quit = false;
+        int menuItem;
+        do {
+            System.out.println("Chose animal name: ");
+            menuItem = in.nextInt();
+            switch (menuItem) {
+                case 1:
+                    System.out.println("animalName1 = " + animalName1);
+                    break;
+                case 2:
+                    System.out.println("animalName2 = " + animalName2);
+                    break;
+                case 3:
+                    System.out.println("animalName3 = " + animalName3);
+                    break;
+                case 0:
+                    quit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choise.");
+            }
+        } while (!quit);
+        System.out.println("Good bye!");
+
+
+        Integer inums[] = {1, 2, 3, 4, 5};
+        Double dnums[] = {1.0, 2.0, 3.0, 4.0, 5.0};
+
+        Descendants<Integer> iDescendants = new Descendants<Integer>(inums);
+        Descendants<Double> dDescendants = new Descendants<Double>(dnums);
+
+        if(iDescendants.sameAvg(iDescendants))
+            System.out.println("Same");
+        else
+            System.out.println("Not same");
 
     }
 
