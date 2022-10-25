@@ -243,26 +243,30 @@ public class Animals {
         String nameOfAnimal = animalname.name();
         System.out.println(nameOfAnimal);
 
-        ArrayList<String> animalNames = new ArrayList<String>();
+        ArrayList<Integer> animalNames = new ArrayList<Integer>();
 
         InputStream inputStream = System.in;
         Reader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-        System.out.println("Vvedit imya tvarunu nomer 1");
-        animalNames.add(bufferedReader.readLine());
+        System.out.println("Vvedit vik tvarunu nomer 1");
+        animalNames.add(Integer.valueOf(bufferedReader.readLine()));
         System.out.println("Vvedit imya tvarunu nomer 2");
-        animalNames.add(bufferedReader.readLine());
+        animalNames.add(Integer.valueOf(bufferedReader.readLine()));
         System.out.println("Vvedit imya tvarunu nomer 3");
-        animalNames.add(bufferedReader.readLine());
+        animalNames.add(Integer.valueOf(bufferedReader.readLine()));
 
-        String animalName1 = animalNames.get(0);
-        System.out.println("animalName1 = " + animalName1);
+        int animalName1 = animalNames.get(0);
+        System.out.println("animalAge1 = " + animalName1);
 
-        String animalName2 = animalNames.get(1);
+        try {
+            if (animalName1 < 0) throw new Exception();}
+        catch (Exception e) {animalName1 = 0;}
+
+        int animalName2 = animalNames.get(1);
         System.out.println("animalName2 = " + animalName2);
 
-        String animalName3 = animalNames.get(2);
+        int animalName3 = animalNames.get(2);
         System.out.println("animalName3 = " + animalName3);
 
 
