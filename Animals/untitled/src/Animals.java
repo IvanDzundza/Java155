@@ -294,7 +294,9 @@ public class Animals {
                         break;
                 } } catch (Exception e) {
                 System.err.println("Please enter a number from 1 to 3");
-                        }
+                        } finally {
+                System.out.println("A number from 1 to 3 only.");
+            }
             } while (!quit) ;
             System.out.println("Good bye!");
 
