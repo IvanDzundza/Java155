@@ -265,34 +265,38 @@ public class Animals {
         String animalName3 = animalNames.get(2);
         System.out.println("animalName3 = " + animalName3);
 
-        Scanner in = new Scanner(System.in);
-        for (int i = 1; i <= 3; i++)
-            System.out.println(i + ". Amimal name #" + i);
-        System.out.println("0. Quit");
 
         boolean quit = false;
         int menuItem;
         do {
+            try {
+                Scanner in = new Scanner(System.in);
+                for (int i = 1; i <= 3; i++)
+
+                System.out.println(i + ". Amimal name #" + i);
+                System.out.println("0. Quit");
+
             System.out.println("Chose animal name: ");
             menuItem = in.nextInt();
-            switch (menuItem) {
-                case 1:
-                    System.out.println("animalName1 = " + animalName1);
-                    break;
-                case 2:
-                    System.out.println("animalName2 = " + animalName2);
-                    break;
-                case 3:
-                    System.out.println("animalName3 = " + animalName3);
-                    break;
-                case 0:
-                    quit = true;
-                    break;
-                default:
-                    System.out.println("Invalid choise.");
-            }
-        } while (!quit);
-        System.out.println("Good bye!");
+
+                switch (menuItem) {
+                    case 1:
+                        System.out.println("animalName1 = " + animalName1);
+                        break;
+                    case 2:
+                        System.out.println("animalName2 = " + animalName2);
+                        break;
+                    case 3:
+                        System.out.println("animalName3 = " + animalName3);
+                        break;
+                    case 0:
+                        quit = true;
+                        break;
+                } } catch (Exception e) {
+                System.err.println("Please enter a number from 1 to 3");
+                        }
+            } while (!quit) ;
+            System.out.println("Good bye!");
 
 
         Integer inums[] = {1, 2, 3, 4, 5};
